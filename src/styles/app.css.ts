@@ -9,13 +9,14 @@ export const appContainer = style({
   flexDirection: "column",
   minHeight: "100vh",
   gap: "4.25rem",
+  overflow: "hidden",
+  marginBlock: "3rem",
 });
 
 export const heading = style({
   fontSize: "clamp(2rem, 0.22rem + 7.5vw, 3.5rem)",
   color: "hsla(0, 0%, 100%, 0.12)",
   letterSpacing: "-3px",
-  marginTop: "4rem",
 });
 
 export const container = style({
