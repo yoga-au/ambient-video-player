@@ -68,7 +68,7 @@ function App() {
                 setVideoUrl(data.url);
               }}
             >
-              {data.label.toUpperCase()}
+              <p>{data.label.toUpperCase()}</p>
             </button>
           );
         })}
