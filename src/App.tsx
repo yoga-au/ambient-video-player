@@ -7,7 +7,14 @@ import {
   buttonStyle,
   buttonContainer,
   heading,
+  buttonText,
+  inputStyle,
+  formStyle,
+  labelStyle,
 } from "./styles/app.css";
+import { EXAMPLE_BTN } from "./utils/constant";
+
+import type { FormEvent } from "react";
 
 function App() {
   const [videoUrl, setVideoUrl] = useState(
@@ -16,21 +23,12 @@ function App() {
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const tempUrl = useRef("");
 
-  const EXAMPLE_BTN = [
-    {
-      label: "Example 1",
-      url: "https://joy.videvo.net/videvo_files/video/free/2019-01/large_watermarked/181015_13_Venice%20Beach%20Drone_25_preview.mp4",
-    },
-    {
-      label: "Example 2",
-      url: "https://joy.videvo.net/videvo_files/video/free/2016-11/large_watermarked/Smoke_Dark_11_Videvo_preview.mp4",
-    },
-    {
-      label: "Example 3",
-      url: "https://wedistill.io/uploads/videos/processed/1007/2015-03-29-01.mp4.mp4",
-    },
-  ];
+  const onSubmit = (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    setVideoUrl(tempUrl.current);
+  };
 
   return (
     <div className={appContainer}>
@@ -68,11 +66,28 @@ function App() {
                 setVideoUrl(data.url);
               }}
             >
-              <p>{data.label.toUpperCase()}</p>
+              <p className={buttonText}>{data.label.toUpperCase()}</p>
             </button>
           );
         })}
       </div>
+      <label htmlFor="video-url" className={labelStyle}>
+        Video URL
+      </label>
+      <form className={formStyle} onSubmit={onSubmit}>
+        <input
+          type="text"
+          className={inputStyle}
+          id="video-url"
+          onChange={(ev) => {
+            const value = ev.target.value;
+            tempUrl.current = value;
+          }}
+        />
+        <button className={buttonStyle} type="submit">
+          <p className={buttonText}>Apply</p>
+        </button>
+      </form>
     </div>
   );
 }
