@@ -1,7 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
-const convert = "48rem";
-
 export const appContainer = style({
   display: "flex",
   alignItems: "center",
@@ -71,4 +69,27 @@ export const buttonStyle = style({
 export const buttonText = style({
   fontSize: "clamp(12px, 0.53rem + 0.98vw, 16px)",
   textAlign: "center",
+});
+
+export const formStyle = style({
+  display: "flex",
+  flexWrap: "nowrap",
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: "-2.5rem",
+});
+
+export const labelStyle = style({
+  color: "hsl(0, 0%, 80%)",
+  marginRight: "1.5rem",
+});
+
+export const inputStyle = style({
+  all: "unset",
+  backgroundColor: "transparent",
+  padding: "0.5rem",
+  fontFamily: "Arial, sans-serif",
+  fontSize: "clamp(12px, 0.53rem + 0.98vw, 16px)",
+  color: "hsl(0, 0%, 80%)",
+  border: "1px solid currentColor",
 });

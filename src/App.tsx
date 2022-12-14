@@ -8,8 +8,13 @@ import {
   buttonContainer,
   heading,
   buttonText,
+  inputStyle,
+  formStyle,
+  labelStyle,
 } from "./styles/app.css";
 import { EXAMPLE_BTN } from "./utils/constant";
+
+import type { FormEvent } from "react";
 
 function App() {
   const [videoUrl, setVideoUrl] = useState(
@@ -18,6 +23,12 @@ function App() {
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const tempUrl = useRef("");
+
+  const onSubmit = (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    setVideoUrl(tempUrl.current);
+  };
 
   return (
     <div className={appContainer}>
@@ -60,6 +71,23 @@ function App() {
           );
         })}
       </div>
+      <label htmlFor="video-url" className={labelStyle}>
+        Video URL
+      </label>
+      <form className={formStyle} onSubmit={onSubmit}>
+        <input
+          type="text"
+          className={inputStyle}
+          id="video-url"
+          onChange={(ev) => {
+            const value = ev.target.value;
+            tempUrl.current = value;
+          }}
+        />
+        <button className={buttonStyle} type="submit">
+          <p className={buttonText}>Apply</p>
+        </button>
+      </form>
     </div>
   );
 }
