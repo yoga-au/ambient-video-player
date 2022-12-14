@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-const convert = "23.4375rem";
+const convert = "48rem";
 
 export const appContainer = style({
   display: "flex",
@@ -15,8 +15,8 @@ export const appContainer = style({
 
 export const heading = style({
   fontSize: "clamp(2rem, 0.22rem + 7.5vw, 3.5rem)",
-  color: "hsla(0, 0%, 100%, 0.12)",
-  letterSpacing: "-3px",
+  color: "hsla(0, 0%, 100%, 0.8)",
+  textAlign: "center",
 });
 
 export const container = style({
@@ -63,7 +63,12 @@ export const buttonStyle = style({
   all: "unset",
   padding: "0.5em 1.5em",
   backgroundColor: "unset",
-  color: "hsl(0, 0%, 35%)",
+  color: "hsl(0, 0%, 80%)",
   border: "1px solid currentColor",
   cursor: "pointer",
+});
+
+export const buttonText = style({
+  fontSize: "clamp(12px, 0.53rem + 0.98vw, 16px)",
+  textAlign: "center",
 });
